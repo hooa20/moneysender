@@ -1,0 +1,34 @@
+package hooa.job.order;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.HttpHeaders;
+import org.springframework.test.context.junit4.SpringRunner;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+class JobOrderApplicationTests {
+	
+	 
+	@Autowired
+	TestRestTemplate testRestTemplate;
+	
+	@Test
+	public void hello() throws Exception {
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("X-USER-ID", "kakao435872");
+		headers.add("X-ROOM-ID", "kakaoroom2352");
+		
+		
+		
+        String result = testRestTemplate.getForObject("/hello", String.class);
+        assertThat(result).isEqualTo("hello saelobi");
+    }
+
+}

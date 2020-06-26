@@ -120,11 +120,12 @@ public class JobService {
 					total = total + Long.valueOf(one.getTakeAmount());
 					if(!"".equals(one.getTakeId())){
 						take = take + Long.valueOf(one.getTakeAmount());
-						onetakeinfo = new OrderVO();
-						onetakeinfo.setTakeAmount(one.getTakeAmount());
-						onetakeinfo.setTakeId(one.getTakeId());
-						takeinfos.add(onetakeinfo);
 					}
+					
+					onetakeinfo = new OrderVO();
+					onetakeinfo.setTakeAmount(one.getTakeAmount());
+					onetakeinfo.setTakeId(one.getTakeId());
+					takeinfos.add(onetakeinfo);
 				}
 				
 				rs.setOpendtm(orderlist.get(0).getOpenDtm());

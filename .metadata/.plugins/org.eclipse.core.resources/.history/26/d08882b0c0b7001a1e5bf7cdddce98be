@@ -24,36 +24,16 @@ class JobOrderApplicationTests {
 	TestRestTemplate testRestTemplate;
 	
 	@Test
-	public void api1() throws Exception {
+	public void hello() throws Exception {
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("X-USER-ID", "kakao435872");
 		headers.add("X-ROOM-ID", "kakaoroom2352");
 		
+		testRestTemplate.getForObject("/hello", String.class);
+		
         ResponseEntity<ControllerRS> result = testRestTemplate.exchange("/sprinklemoney/60000/3", HttpMethod.GET, new HttpEntity<>(headers), ControllerRS.class);
         //assertThat(result).isEqualTo("hello saelobi");
-       
-        String token = "";
-        if("Y".equals(result.getBody().getSuccessyn())){
-        	
-        	token = result.getBody().getServicers().getToken();
-        	
-        	
-        	headers = new HttpHeaders();
-    		headers.add("X-USER-ID", "kakao99999");
-    		headers.add("X-ROOM-ID", "kakaoroom2352");
-        	
-        	result = testRestTemplate.exchange("/takemoney/" + token, HttpMethod.GET, new HttpEntity<>(headers), ControllerRS.class);
-        	result = testRestTemplate.exchange("/takemoney/" + token, HttpMethod.GET, new HttpEntity<>(headers), ControllerRS.class);
-        	
-        }
-        
-        
-        headers = new HttpHeaders();
-		headers.add("X-USER-ID", "kakao435872");
-		headers.add("X-ROOM-ID", "kakaoroom2352");
-		
-		result = testRestTemplate.exchange("/searchmyorderlist/" + token, HttpMethod.GET, new HttpEntity<>(headers), ControllerRS.class);
     }
 
 }

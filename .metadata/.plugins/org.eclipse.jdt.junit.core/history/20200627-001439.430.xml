@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="JobOrderApplicationTests" project="JobOrder" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="hooa.job.order.JobOrderApplicationTests" time="0.684" displayname="JobOrderApplicationTests" uniqueid="[engine:junit-jupiter]/[class:hooa.job.order.JobOrderApplicationTests]">
+    <testcase name="hello" classname="hooa.job.order.JobOrderApplicationTests" time="0.684" displayname="hello()" uniqueid="[engine:junit-jupiter]/[class:hooa.job.order.JobOrderApplicationTests]/[method:hello()]"/>
+  </testsuite>
+</testrun>

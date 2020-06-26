@@ -54,6 +54,10 @@ class JobOrderApplicationTests {
 		headers.add("X-ROOM-ID", "kakaoroom2352");
 		
 		result = testRestTemplate.exchange("/searchmyorderlist/" + token, HttpMethod.GET, new HttpEntity<>(headers), ControllerRS.class);
+		
+        
+        
+        
     }
 
 }
