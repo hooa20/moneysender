@@ -1,0 +1,20 @@
+package hooa.job.order.service;
+
+public class TakeInfo {
+	
+	private long takeamount;
+	private String takeid;
+	public long getTakeamount() {
+		return takeamount;
+	}
+	public void setTakeamount(long takeamount) {
+		this.takeamount = takeamount;
+	}
+	public String getTakeid() {
+		return takeid;
+	}
+	public void setTakeid(String takeid) {
+		this.takeid = takeid;
+	}
+
+}

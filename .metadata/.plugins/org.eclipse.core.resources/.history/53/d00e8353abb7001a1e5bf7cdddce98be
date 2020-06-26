@@ -1,0 +1,62 @@
+package hooa.job.order.service;
+
+public class ServiceRS {
+	
+	private String token;
+	private String amount;
+	private String opendtm;
+	private long totalamount;
+	private long takenamount;
+	
+	
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
+	public String getAmount() {
+		return amount;
+	}
+	public void setAmount(String amount) {
+		this.amount = amount;
+	}
+	public String getOpendtm() {
+		return opendtm;
+	}
+	public void setOpendtm(String opendtm) {
+		this.opendtm = opendtm;
+	}
+	public long getTotalamount() {
+		return totalamount;
+	}
+	public void setTotalamount(long totalamount) {
+		this.totalamount = totalamount;
+	}
+	public long getTakenamount() {
+		return takenamount;
+	}
+	public void setTakenamount(long takenamount) {
+		this.takenamount = takenamount;
+	}
+
+
+
+	public class TakInfo {
+		
+		private long takeamount;
+		private String takeid;
+		public long getTakeamount() {
+			return takeamount;
+		}
+		public void setTakeamount(long takeamount) {
+			this.takeamount = takeamount;
+		}
+		public String getTakeid() {
+			return takeid;
+		}
+		public void setTakeid(String takeid) {
+			this.takeid = takeid;
+		}
+	}
+}

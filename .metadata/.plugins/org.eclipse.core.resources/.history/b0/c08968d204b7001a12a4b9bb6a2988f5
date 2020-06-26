@@ -1,0 +1,8 @@
+spring.datasource.driverClassName=org.mariadb.jdbc.Driver 
+spring.datasource.url=jdbc:mariadb://localhost:3306/null
+
+
+spring.datasource.hikari.username=hooa 
+spring.datasource.hikari.password=u1234 
+spring.datasource.hikari.maximum-pool-size=10 
+spring.datasource.hikari.connection-test-query=SELECT 1

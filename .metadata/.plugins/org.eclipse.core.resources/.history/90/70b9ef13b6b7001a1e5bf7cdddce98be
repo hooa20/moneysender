@@ -1,0 +1,100 @@
+package hooa.job.order.controller;
+
+import org.apache.tomcat.util.buf.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import hooa.job.order.service.JobService;
+import hooa.job.order.service.ServiceRS;
+
+@RestController
+public class JobContorller {
+	
+	@Autowired(required = false)
+	JobService jobService;
+	
+	@RequestMapping(path="/sprinklemoney/{money}/{persons}")
+	public ControllerRS SprinkleMoney(@RequestHeader("X-USER-ID") String xuserid
+			                  , @RequestHeader("X-ROOM-ID") String xroomid
+			                  , @PathVariable("money") String money
+			                  , @PathVariable("persons") String persons) {
+		
+		ControllerRS rs = new ControllerRS();
+		
+		try {
+			ServiceRS serviceRS = jobService.SprinkleMoney(xuserid, xroomid, money, persons);
+			rs.setServicers(serviceRS);
+			if(serviceRS.getReturnmsg() != null) {
+				rs.setSuccessyn("N");
+			} else {
+				rs.setSuccessyn("Y");
+			}
+			
+		} catch(Exception e) {
+			rs.setSuccessyn("N");
+			rs.setErrmessage("예외발생 controller : 시스템담당자에게 문의해 주세요");
+			System.out.println(e.getMessage());
+			
+		}
+				
+		return rs;
+	}
+	
+	@RequestMapping(path="/takemoney/{token}")
+	public ControllerRS TakeMoney(@RequestHeader("X-USER-ID") String xuserid
+			                  , @RequestHeader("X-ROOM-ID") String xroomid
+			                  , @PathVariable("token") String token) {
+		
+		ControllerRS rs = new ControllerRS();
+		
+		try {
+			ServiceRS serviceRS = jobService.TakeMoney(xuserid, xroomid, token);
+			rs.setServicers(serviceRS);
+			if(serviceRS.getReturnmsg() != null) {
+				rs.setSuccessyn("N");
+			} else {
+				rs.setSuccessyn("Y");
+			}
+			
+		} catch(Exception e) {
+			rs.setSuccessyn("N");
+			rs.setErrmessage("예외발생 controller : 시스템담당자에게 문의해 주세요");
+			System.out.println(e.getMessage());
+			
+		}
+		
+		return rs;
+	}
+
+	
+	@RequestMapping(path="/searchmyorderlist/{token}")
+	public ControllerRS SearchMyOrderList(@RequestHeader("X-USER-ID") String xuserid
+			                  , @RequestHeader("X-ROOM-ID") String xroomid
+			                  , @PathVariable("token") String token) {
+		
+		ControllerRS rs = new ControllerRS();
+		try {
+			
+			ServiceRS serviceRS = jobService.SearchMyOrderList(xuserid, xroomid, token);
+			rs.setServicers(serviceRS);
+			if(serviceRS.getReturnmsg() != null) {
+				rs.setSuccessyn("N");
+			} else {
+				rs.setSuccessyn("Y");
+			}
+			
+		} catch(Exception e) {
+			rs.setSuccessyn("N");
+			rs.setErrmessage("예외발생 controller : 시스템담당자에게 문의해 주세요");
+			System.out.println(e.getMessage());
+			
+		}
+		
+		return rs;
+	}
+	
+	
+}

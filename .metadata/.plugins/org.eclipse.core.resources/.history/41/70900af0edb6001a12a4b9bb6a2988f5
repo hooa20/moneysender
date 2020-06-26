@@ -1,0 +1,5 @@
+package hooa.sboot.order.service;
+
+public class OrderKakaoService {
+
+}

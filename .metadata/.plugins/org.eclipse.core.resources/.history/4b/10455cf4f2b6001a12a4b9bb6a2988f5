@@ -1,0 +1,45 @@
+package hooa.sboot.order.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class OrderKakaoService {
+	
+	public String SprinkleMoney(String xuserid
+			                  , String xroomid
+			                  , String money
+			                  , String persons) {
+		
+		try {
+			int int_moeny = Integer.valueOf(persons);
+			int int_person = Integer.valueOf(persons);
+			
+			int onepay = int_moeny / int_person;
+			
+			for(int pidx = 0 ; pidx < int_person; pidx++) {
+				
+				System.out.println("pidx : " + pidx+1);
+				
+				if(pidx + 1 == int_person) { // 짜투리 몰빵
+					System.out.println("pidx : " + (int_moeny));
+				} else {
+					System.out.println("pidx : " + (onepay));
+					int_moeny = int_moeny-onepay;
+				}
+			}
+			
+		} catch (Exception e) {
+			
+			
+		}
+		
+		
+		return "";
+	}
+	
+	
+	
+	
+	
+
+}

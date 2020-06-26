@@ -1,0 +1,75 @@
+package hooa.job.order.service;
+
+import java.util.List;
+
+public class ServiceRS {
+	
+	private String returnmsg;
+	private String token;
+	private String amount;
+	private String opendtm;
+	private long totalamount;
+	private long takenamount;
+	private List<TakInfo> taekinfos;
+	
+	public String getReturnmsg() {
+		return returnmsg;
+	}
+	public void setReturnmsg(String returnmsg) {
+		this.returnmsg = returnmsg;
+	}
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
+	public String getAmount() {
+		return amount;
+	}
+	public void setAmount(String amount) {
+		this.amount = amount;
+	}
+	public String getOpendtm() {
+		return opendtm;
+	}
+	public void setOpendtm(String opendtm) {
+		this.opendtm = opendtm;
+	}
+	public long getTotalamount() {
+		return totalamount;
+	}
+	public void setTotalamount(long totalamount) {
+		this.totalamount = totalamount;
+	}
+	public long getTakenamount() {
+		return takenamount;
+	}
+	public void setTakenamount(long takenamount) {
+		this.takenamount = takenamount;
+	}
+	public List<TakInfo> getTaekinfos() {
+		return taekinfos;
+	}
+	public void setTaekinfos(List<TakInfo> taekinfos) {
+		this.taekinfos = taekinfos;
+	}
+
+	public class TakInfo {
+		
+		private long takeamount;
+		private String takeid;
+		public long getTakeamount() {
+			return takeamount;
+		}
+		public void setTakeamount(long takeamount) {
+			this.takeamount = takeamount;
+		}
+		public String getTakeid() {
+			return takeid;
+		}
+		public void setTakeid(String takeid) {
+			this.takeid = takeid;
+		}
+	}
+}

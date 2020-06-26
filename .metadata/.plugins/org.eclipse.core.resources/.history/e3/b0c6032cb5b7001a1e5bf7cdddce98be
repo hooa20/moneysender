@@ -1,0 +1,5 @@
+package hooa.job.order.filter;
+
+public class CORSFilter {
+
+}

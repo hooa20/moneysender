@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hooa.job.order.mapper.OrderMapper">
+    <insert id="insertData" parameterType="hooa.job.order.dao.OrderVO"> 
+        INSERT INTO TB_ORDER
+        VALUES(#{token}, #{giveId}, #{giveRoom}, #{takeSeq}, #{takeId}, #{takeAmount}, to_char(now(), 'yyyymmddhh24miss'))
+    </insert>
+    
+    <resultMap id="BaseResultMap" type="hooa.job.order.dao.OrderVO">
+		<result column="TOKEN"		property="token" 		    jdbcType="VARCHAR" />
+		<result column="GIVE_ID" 	property="giveId"		    jdbcType="VARCHAR" />
+		<result column="GIVE_ROOM"	property="giveRoom"	        jdbcType="VARCHAR" />
+		<result column="TAKE_SEQ" 	property="takeSeq" 			jdbcType="INTEGER" />
+		<result column="TAKE_ID" 	property="takeId" 			jdbcType="VARCHAR" />
+		<result column="TAKE_AMOUNT" property="takeAmount" 		jdbcType="VARCHAR" />
+		<result column="OPEN_DTM"	property="openDtm"		    jdbcType="VARCHAR" />
+    </resultMap>
+    
+    <select id="chkPossibleTake" resultMap="BaseResultMap" parameterType="hooa.job.order.dao.OrderVO">
+    	<![CDATA[
+    	SELECT TOKEN, GIVE_ID, GIVE_ROME, TAKE_SEQ, TAKE_ID, TAKE_AMOUNT
+    	  FROM TB_ORDER A
+    	 WHERE TOKEN = #{token}
+    	   AND GIVE_ID != #{takeId}
+    	   AND GIVE_ROOM = #{giveRoom}
+    	   AND TAKE_ID = ''
+    	   AND OPEN_DTM >= to_char((now() - interval '10 min'), 'yyyymmddhh24miss')
+    	   AND NOT EXISTS
+    	   (SELECT * 
+    	      FROM TB_ORDER B
+    	     WHERE B.TOKEN = A.TOKEN
+    	      AND B.GIVE_ID = A.GIVE_ID
+    	      AND B.GIVE_ROME = A.GIVE_ROME
+    	      AND B.TAKE_ID = #{takeId})
+    	]]>
+    </select>
+    
+	<update id="takeMoney" parameterType="hooa.job.order.dao.OrderVO">
+	<!--예약요청재신청시 신규 업데이트-->
+		UPDATE TB_ORDER
+		SET TAKE_ID = #{takeId}
+		WHERE TOKEN = #{token}
+		AND GIVE_ROME = #{giveRome}
+		AND TAKE_SEQ = #{takeSeq}
+	</update>
+	
+	
+	<select id="searchMyOrderList" resultMap="BaseResultMap" parameterType="hooa.job.order.dao.OrderVO">
+	<!--예약요청재신청시 신규 업데이트-->
+		UPDATE TB_ORDER
+		SET TAKE_ID = #{takeId}
+		WHERE TOKEN = #{token}
+		AND GIVE_ROME = #{giveRome}
+		AND TAKE_SEQ = #{takeSeq}
+	</select>
+    
+    
+</mapper>

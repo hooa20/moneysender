@@ -1,0 +1,49 @@
+package hooa.job.order.controller;
+
+
+public class ControllerRS {
+	
+	private String successyn;
+	private String errmessage;
+	private ResultRS resultrs; 
+	
+	public String getSuccessyn() {
+		return successyn;
+	}
+	public void setSuccessyn(String successyn) {
+		this.successyn = successyn;
+	}
+	public String getErrmessage() {
+		return errmessage;
+	}
+	public void setErrmessage(String errmessage) {
+		this.errmessage = errmessage;
+	}
+	public ResultRS getResultrs() {
+		return resultrs;
+	}
+	public void setResultrs(ResultRS resultrs) {
+		this.resultrs = resultrs;
+	}
+
+	public class ResultRS {
+		
+		private String token;
+		private String amount;
+		
+		public String getToken() {
+			return token;
+		}
+		public void setToken(String token) {
+			this.token = token;
+		}
+		public String getAmount() {
+			return amount;
+		}
+		public void setAmount(String amount) {
+			this.amount = amount;
+		}
+	}
+	
+
+}

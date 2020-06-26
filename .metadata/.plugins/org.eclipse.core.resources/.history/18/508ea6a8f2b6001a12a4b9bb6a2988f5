@@ -1,0 +1,22 @@
+package hooa.sboot.order.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class OrderKakaoService {
+	
+	public String dsfs() {
+		
+		return "4wrwerw";
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+
+}
